@@ -14,11 +14,11 @@ fn main() {
 
 fn problem1() {
     let (mut cargo,instructions) = parse_input(INPUT,STRUCT_LEN,STRUCT_HEIGHT);
-    print_cargo(&cargo);
+    //print_cargo(&cargo);
     for instruction in instructions {
-        println!("Moving {} From {} To {}",instruction.0,instruction.1,instruction.2);
+        //println!("Moving {} From {} To {}",instruction.0,instruction.1,instruction.2);
         do_move(&mut cargo,instruction);
-        print_cargo(&cargo);
+        //print_cargo(&cargo);
     }
     for i in 0 .. STRUCT_LEN {
         match cargo[i].pop_front() {
@@ -26,15 +26,16 @@ fn problem1() {
             None => continue,
         };
     };
+    print!("\n");
 }
 
 fn problem2() {
     let (mut cargo,instructions) = parse_input(INPUT,STRUCT_LEN,STRUCT_HEIGHT);
-    print_cargo(&cargo);
+    //print_cargo(&cargo);
     for instruction in instructions {
-        println!("Moving {} From {} To {}",instruction.0,instruction.1,instruction.2);
+        //println!("Moving {} From {} To {}",instruction.0,instruction.1,instruction.2);
         big_move(&mut cargo,instruction);
-        print_cargo(&cargo);
+        //print_cargo(&cargo);
     }
     for i in 0 .. STRUCT_LEN {
         match cargo[i].pop_front() {
@@ -42,6 +43,7 @@ fn problem2() {
             None => continue,
         };
     };
+    print!("\n");
 }
 
 fn parse_input(input: &str, struct_len: usize,struct_height: usize) -> (Cargo,Instructions) {
@@ -74,6 +76,7 @@ fn parse_struct(cargo: &mut Cargo, line: &str, struct_len: usize) {
 
 }
 
+#[allow(dead_code)]
 fn print_cargo(cargo: &Cargo) {
     for i in 0..cargo.len() {
         print!("{} ",i);
