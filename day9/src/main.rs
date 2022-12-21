@@ -1,4 +1,4 @@
-pub mod game;
+mod game;
 use game::{State,Instruction,Instructions};
 const INPUT: &str = include_str!("input.txt");
 
@@ -7,8 +7,9 @@ fn main() {
     let (mut state,instructions) = init();
     problem1(state,&instructions);
     // Clear state
-    //state = State::new();
-    //problem2(state,&instructions);
+    state = State::new();
+    problem2(state,&instructions);
+    println!("");
 }
 
 fn init() -> (State,Instructions) {

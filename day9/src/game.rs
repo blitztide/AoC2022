@@ -10,16 +10,25 @@ pub struct State {
 impl State {
     pub fn new() -> State {
         let origin: Position = Position { x:ORIGIN, y:ORIGIN};
-        State {head: origin, tail: origin, board: [[0;BOARD_SIZE];BOARD_SIZE]}
+        State {head: origin, tail: origin, board: [[false;BOARD_SIZE];BOARD_SIZE]}
     }
 
     pub fn update(&mut self, instruction: &Instruction) {
         match instruction.direction {
-            Direction::Up => return,
-            Direction::Down => return,
-            Direction::Left => return,
-            Direction::Right => return,
+            Direction::Up => {
+                self.head.y += 1;
+            },
+            Direction::Down => {
+                self.head.y -= 1;
+            },
+            Direction::Left => {
+                self.head.x -= 1;
+            },
+            Direction::Right => {
+                self.head.x +=1;
+            },
         };
+        println!("{} {}",self.head.x, self.head.y);
     }
 
     pub fn rope_travel(&self) {
@@ -28,21 +37,21 @@ impl State {
 
 }
 
-type Board = [[i32;BOARD_SIZE];BOARD_SIZE];
+type Board = [[bool;BOARD_SIZE];BOARD_SIZE];
 #[derive(Clone,Copy)]
 struct Position {
     x: i32,
     y: i32,
 }
 
-pub enum Direction {
+enum Direction {
     Up,
     Down,
     Left,
     Right,
 }
 pub struct Instruction {
-    pub direction: Direction,
+    direction: Direction,
     pub count: i32,
 }
 
