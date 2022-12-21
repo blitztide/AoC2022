@@ -1,3 +1,13 @@
+const INPUT: &str = include_str!("input.txt");
+
 fn main() {
-    println!("Hello, world!");
+    problem1();
+}
+
+
+fn problem1() {
+}
+
+fn problem2() {
+    
 }
